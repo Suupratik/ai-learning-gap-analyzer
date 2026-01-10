@@ -77,9 +77,6 @@ Gemini AI Model
    ↓
 Personalized Learning Recommendations
 ```
-
-*(Diagram recommended in PPT)*
-
 ---
 
 ## 🛠️ Technologies Used
