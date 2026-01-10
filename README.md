@@ -85,7 +85,7 @@ Personalized Learning Recommendations
 | ---------------------- | ----------------- |
 | Frontend               | Streamlit         |
 | Backend                | Python            |
-| AI Model               | Google Gemini API |
+| AI Model | Google Gemini (Generative AI) |
 | Environment Management | python-dotenv     |
 | Version Control        | Git & GitHub      |
 
