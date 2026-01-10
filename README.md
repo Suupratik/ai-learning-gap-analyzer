@@ -227,7 +227,7 @@ This project:
 **Name:** Supratik Mitra
 **Program:** CSRBOX – AICTE Applied AI Internship 2025
 **Domain:** Applied Artificial Intelligence
-**Theme:** Education Technology ()
+**Theme:** Education Technology (EdTech)
 
 ---
 
