@@ -224,10 +224,10 @@ This project:
 
 ## 👨‍💻 Developer Details
 
-**Name:** Supratik Mitra
-**Program:** CSRBOX – AICTE Applied AI Internship 2025
-**Domain:** Applied Artificial Intelligence
-**Theme:** Education Technology (EdTech)
+- **Name:** Supratik Mitra
+- **Program:** CSRBOX – AICTE Applied AI Internship 2025
+- **Domain:** Applied Artificial Intelligence
+- **Theme:** Education Technology (EdTech)
 
 ---
 
