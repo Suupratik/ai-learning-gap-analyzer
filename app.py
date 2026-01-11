@@ -4,7 +4,7 @@ import google.genai as genai
 # -----------------------------------
 # API KEY (REPLACE VALUE ONLY)
 # -----------------------------------
-API_KEY = "AIzaSyBj7hDSAXa2XzRO1BHVjdBDutWL3Ey9KwI"
+API_KEY = st.secrets["GOOGLE_API_KEY"]
 
 # Initialize Gemini client
 client = genai.Client(api_key=API_KEY)
@@ -98,3 +98,4 @@ st.divider()
 st.caption(
     "Developed by Supratik Mitra | CSRBOX – AICTE Applied AI Internship 2025 | SDG 4"
 )
+
