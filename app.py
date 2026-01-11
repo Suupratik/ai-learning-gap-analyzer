@@ -1,13 +1,17 @@
 import streamlit as st
-import google.genai as genai
+import google.generativeai as genai
 
 # -----------------------------------
-# API KEY (from Streamlit Secrets)
+# Configure Gemini API (Streamlit Secrets)
 # -----------------------------------
-API_KEY = st.secrets["GOOGLE_API_KEY"]
+# IMPORTANT:
+# Add your key in Streamlit → App Settings → Secrets
+# GOOGLE_API_KEY = "AIzaSyxxxxxxxxxxxxxxxxxxxx"
 
-# Initialize Gemini client
-client = genai.Client(api_key=API_KEY)
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+
+# Initialize Gemini model (STABLE)
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 # -----------------------------------
 # Page Configuration
@@ -22,12 +26,13 @@ st.set_page_config(
 # App Header
 # -----------------------------------
 st.title("AI-Powered Personalized Learning Gap Analyzer")
-st.subheader("SDG 4 – Quality Education")
+st.subheader("UN SDG 4 – Quality Education")
 
 st.write(
     """
     This application helps learners identify their learning gaps
-    and receive personalized study recommendations using AI.
+    and receive personalized study recommendations using
+    Artificial Intelligence.
     """
 )
 
@@ -72,7 +77,7 @@ A student is learning the topic "{topic}".
 Their confidence level is "{level}".
 
 Provide:
-1. A brief explanation of the learner's possible knowledge gaps
+1. A brief explanation of possible learning gaps
 2. Personalized study recommendations
 3. Suggested next steps to improve understanding
 
@@ -80,10 +85,7 @@ Keep the response concise, structured, and educational.
 """
 
         with st.spinner("AI is analyzing learning gaps..."):
-            response = client.models.generate_content(
-                model="models/gemini-pro",   # ✅ FIXED
-                contents=prompt
-            )
+            response = model.generate_content(prompt)
 
         st.success("Analysis Complete")
         st.write(f"**Topic:** {topic}")
