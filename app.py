@@ -2,13 +2,10 @@ import streamlit as st
 import google.generativeai as genai
 
 # -----------------------------------
-# Configure Gemini API (Streamlit Secrets)
+# Load API Key from Streamlit Secrets
 # -----------------------------------
-# IMPORTANT:
-# Add your key in Streamlit → App Settings → Secrets
-# GOOGLE_API_KEY = "AIzaSyxxxxxxxxxxxxxxxxxxxx"
-
-genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+API_KEY = st.secrets["GOOGLE_API_KEY"]
+genai.configure(api_key=API_KEY)
 
 # Initialize Gemini model (STABLE)
 model = genai.GenerativeModel("gemini-1.5-flash")
@@ -26,13 +23,13 @@ st.set_page_config(
 # App Header
 # -----------------------------------
 st.title("AI-Powered Personalized Learning Gap Analyzer")
-st.subheader("UN SDG 4 – Quality Education")
+st.subheader("Aligned with SDG 4 – Quality Education")
 
 st.write(
     """
     This application helps learners identify their learning gaps
-    and receive personalized study recommendations using
-    Artificial Intelligence.
+    and receive personalized study recommendations using a
+    hybrid AI-based approach.
     """
 )
 
@@ -56,13 +53,13 @@ confidence = st.slider(
 )
 
 # -----------------------------------
-# Hybrid Logic: Rule-based + AI
+# Hybrid Logic: Rule-Based + AI
 # -----------------------------------
 if st.button("Analyze Learning Gap"):
     if topic.strip() == "":
         st.warning("Please enter a topic before analysis.")
     else:
-        # Rule-based fallback logic
+        # Rule-based fallback classification
         if confidence <= 3:
             level = "Low"
         elif confidence <= 7:
@@ -73,24 +70,24 @@ if st.button("Analyze Learning Gap"):
         prompt = f"""
 You are an AI learning assistant.
 
-A student is learning the topic "{topic}".
-Their confidence level is "{level}".
+A student is studying "{topic}".
+Their self-assessed confidence level is "{level}".
 
 Provide:
-1. A brief explanation of possible learning gaps
+1. Likely learning gaps
 2. Personalized study recommendations
-3. Suggested next steps to improve understanding
+3. Clear next steps for improvement
 
 Keep the response concise, structured, and educational.
 """
 
-        with st.spinner("AI is analyzing learning gaps..."):
+        with st.spinner("Analyzing learning gaps using AI..."):
             response = model.generate_content(prompt)
 
         st.success("Analysis Complete")
         st.write(f"**Topic:** {topic}")
         st.write(f"**Learning Level:** {level}")
-        st.write("**AI-Powered Recommendation:**")
+        st.write("### AI-Powered Recommendations")
         st.write(response.text)
 
 # -----------------------------------
@@ -98,5 +95,5 @@ Keep the response concise, structured, and educational.
 # -----------------------------------
 st.divider()
 st.caption(
-    "Developed by Supratik Mitra | CSRBOX – AICTE Applied AI Internship 2025 | SDG 4"
+    "Developed by Supratik Mitra | AICTE–CSRBOX Applied AI Internship 2025 | SDG 4"
 )
