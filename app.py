@@ -81,7 +81,7 @@ Keep the response concise, structured, and educational.
 
         with st.spinner("AI is analyzing learning gaps..."):
             response = client.models.generate_content(
-                model="gemini-1.5-flash",
+                model="models/gemini-1.5-flash",
                 contents=prompt
             )
 
