@@ -2,7 +2,7 @@ import streamlit as st
 import google.genai as genai
 
 # -----------------------------------
-# API KEY (REPLACE VALUE ONLY)
+# API KEY (from Streamlit Secrets)
 # -----------------------------------
 API_KEY = st.secrets["GOOGLE_API_KEY"]
 
@@ -57,7 +57,7 @@ if st.button("Analyze Learning Gap"):
     if topic.strip() == "":
         st.warning("Please enter a topic before analysis.")
     else:
-        # Rule-based classification (fallback logic)
+        # Rule-based fallback logic
         if confidence <= 3:
             level = "Low"
         elif confidence <= 7:
@@ -81,7 +81,7 @@ Keep the response concise, structured, and educational.
 
         with st.spinner("AI is analyzing learning gaps..."):
             response = client.models.generate_content(
-                model="models/gemini-1.5-flash",
+                model="models/gemini-pro",   # ✅ FIXED
                 contents=prompt
             )
 
@@ -98,4 +98,3 @@ st.divider()
 st.caption(
     "Developed by Supratik Mitra | CSRBOX – AICTE Applied AI Internship 2025 | SDG 4"
 )
-
